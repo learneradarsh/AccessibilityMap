@@ -9,6 +9,7 @@ const inputRiskType = document.querySelector('.form__input--type');
 const inputTime = document.querySelector('.form__input--time');
 const inputIssue = document.querySelector('.form__input--issue');
 const resetDataBtn = document.querySelector('#resetData');
+const today = new Date();
 let map, mapPosition;
 const mapZoomLevel = 17;
 
@@ -45,6 +46,7 @@ const loadMap = () => {
 
 const createSpotOnMap = alertData => {
   inputTime.value = inputIssue.value = '';
+  inputTime.value = Date.now().toString();
   L.marker([...alertData.coords])
     .addTo(map)
     .bindPopup(
@@ -111,6 +113,7 @@ const _resetData = () => {
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
+  inputTime.value = `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`;
   if (
     inputRiskType.value === '' ||
     inputIssue.value === '' ||
@@ -122,7 +125,7 @@ form.addEventListener('submit', function (event) {
   const locationData = {
     id: Date.now(),
     risk: inputRiskType.value,
-    timeSlot: inputTime.value,
+    timeSlot: `${today.getDate()}/${today.getMonth()}/${today.getFullYear()}`,
     issue: inputIssue.value,
     dateAndTime: Date.now(),
     coords: [mapPosition.latlng.lat, mapPosition.latlng.lng],
