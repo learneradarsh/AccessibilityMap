@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
+    <script defer src="script.js"></script>
+    <title>Safety Map</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <h2>
+        Safety Map
+        <span>
+          <button class="resetdatabtn" type="button" id="resetData">
+            Reset Data
+          </button>
+        </span>
+      </h2>
+
+      <ul class="warnings">
+        <form class="form hidden">
+          <div class="form__row">
+            <label class="form__label">Risk</label>
+            <select class="form__input form__input--type">
+              <option value="high">High</option>
+              <option value="mediate">Mediate</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label class="form__label">Time Slot</label>
+            <input class="form__input form__input--time" placeholder="In Hrs" />
+          </div>
+          <div class="form__row">
+            <label class="form__label">Issue</label>
+            <input
+              class="form__input form__input--issue"
+              placeholder="Describe security issue here"
+            />
+          </div>
+          <button class="form__btn">OK</button>
+        </form>
+      </ul>
+    </div>
+
+    <div id="map"></div>
+  </body>
+</html>
